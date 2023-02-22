@@ -1,0 +1,77 @@
+{
+	"info": {
+		"_postman_id": "349fdb8e-1902-4eec-9843-2641973a333a",
+		"name": "ms-moto-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12488878"
+	},
+	"item": [
+		{
+			"name": "CrearMotoUsuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n\"marca\":\"motoMarca4\",\r\n\"modelo\":\"motoModelo4\",\r\n\"usuarioId\":\"2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8003/moto",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"moto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ObtenerMotoXid",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8003/moto/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"moto",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListarMotosCreadas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8003/moto",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"moto"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

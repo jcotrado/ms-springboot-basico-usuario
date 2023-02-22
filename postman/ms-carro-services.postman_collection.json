@@ -1,0 +1,77 @@
+{
+	"info": {
+		"_postman_id": "9e811891-a54b-4ccf-b489-5dbd5cdeaf09",
+		"name": "ms-carro-services",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12488878"
+	},
+	"item": [
+		{
+			"name": "CrearCarros",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n\"marca\":\"carro10\",\r\n\"modelo\":\"carroModelo10\",\r\n\"usuarioId\":\"10\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8004/carro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8004",
+					"path": [
+						"carro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListarCarrosCreados",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8004/carro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8004",
+					"path": [
+						"carro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ObtenerCarroxId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8004/carro/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8004",
+					"path": [
+						"carro",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

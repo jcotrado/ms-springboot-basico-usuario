@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.convergenciax.service.servicio.UsuarioService;
 import com.convergenciax.service.entidades.Usuario;
+import com.convergenciax.service.modelos.Carro;
+import com.convergenciax.service.modelos.Moto;
 
 @RestController
 @RequestMapping("/usuario")
@@ -44,5 +46,26 @@ public class UsuarioController {
 		Usuario nuevoUsuario = usuarioService.save(usuario);
 		return ResponseEntity.ok(nuevoUsuario);
 	}
- 
+	
+	@GetMapping("/carros/{usuarioId}")
+	public ResponseEntity <List <Carro>> listarCarros(@PathVariable("usuarioId") int id){
+		Usuario usuario = usuarioService.getUsuarioById(id);
+		if (usuario == null)
+			return ResponseEntity.notFound().build();
+		
+		List <Carro> carros =  usuarioService.getCarros(id);
+		return ResponseEntity.ok(carros);	
+	}
+	
+	@GetMapping("/motos/{usuarioId}")
+	public ResponseEntity <List <Moto>> listarMotos(@PathVariable("usuarioId") int id){
+		Usuario usuario = usuarioService.getUsuarioById(id);
+		if (usuario == null)
+			return ResponseEntity.notFound().build();
+		
+		List <Moto> motos =  usuarioService.getMotos(id);
+		return ResponseEntity.ok(motos);	
+	}
+		
+
 }
