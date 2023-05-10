@@ -2,7 +2,9 @@ package com.convergenciax;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
+@EnableFeignClients  //Se indica el uso de un ClieteFeigns
 @SpringBootApplication
 public class UserServicesApplication {
 

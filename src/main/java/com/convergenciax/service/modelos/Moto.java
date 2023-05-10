@@ -4,7 +4,17 @@ public class Moto {
 	
 	private String marca;
 	private String modelo;
+	private int usuarioId; // Se agrega para utilizarlo en FeignCliente y UsuarioService.saveMoto
 	
+ 
+	public int getUsuarioId() { // Se agrega para utilizarlo en FeignCliente y UsuarioService.saveMoto
+		return usuarioId;
+	}
+
+	public void setUsuarioId(int usuarioId) {// Se agrega para utilizarlo en FeignCliente y UsuarioService.saveMoto
+		this.usuarioId = usuarioId;
+	}
+
 	public String getMarca() {
 		return marca;
 	}

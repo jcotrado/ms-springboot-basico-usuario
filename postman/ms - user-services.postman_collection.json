@@ -8,28 +8,12 @@
 	"item": [
 		{
 			"name": "CrearUsuario",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"protocolProfileBehavior": {
-				"strictSSL": false,
-				"followRedirects": false,
-				"disableUrlEncoding": false
-			},
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\":\"user4\",\r\n    \"email\":\"user4gmail.com\"\r\n}",
+					"raw": "{\r\n\"usuarioId\":\"1\",\r\n\"nombre\":\"nombre1\",\r\n\"email\":\"mail1\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -37,12 +21,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8002/usuario",
+					"raw": "http://localhost:8080/usuario",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8002",
+					"port": "8080",
 					"path": [
 						"usuario"
 					]
@@ -135,6 +119,30 @@
 						"2"
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Carro Usando Feign",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Moto Usando Feign",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Vehiculos usando FeignClient",
+			"request": {
+				"method": "GET",
+				"header": []
 			},
 			"response": []
 		}
