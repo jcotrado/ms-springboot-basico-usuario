@@ -62,9 +62,9 @@ public class UsuarioController {
 		return ResponseEntity.ok(carros);
 	}
 	
-	@CircuitBreaker(name = "carrosCB", fallbackMethod = "fallBackSaveCarro")
 	// Se agrega para utilizarlo en FeignCliente y UsuarioService.saveCarro,
 	// saveMoto+/
+	@CircuitBreaker(name = "carrosCB", fallbackMethod = "fallBackSaveCarro")
 	@PostMapping("/carro/{usuarioId}")
 	public ResponseEntity<Carro> saveCarro(@PathVariable("usuarioId") int usuarioId, @RequestBody Carro carro) {
 		Carro nuevoCarro = usuarioService.saveCarro(usuarioId, carro);
@@ -73,7 +73,7 @@ public class UsuarioController {
 
 	@CircuitBreaker(name = "motosCB", fallbackMethod = "fallBackGetMotos")
 	@GetMapping("/motos/{usuarioId}")
-	public ResponseEntity<List<Moto>> getMotos(@PathVariable("usuarioId") int id) {
+	public ResponseEntity<List<Moto>> listarMotos(@PathVariable("usuarioId") int id) {
 		Usuario usuario = usuarioService.getUsuarioById(id);
 		if (usuario == null)
 			return ResponseEntity.notFound().build();
@@ -83,7 +83,7 @@ public class UsuarioController {
 
 	@CircuitBreaker(name = "motosCB", fallbackMethod = "fallBackSaveMoto")
 	@PostMapping("/moto/{usuarioId}")
-	public ResponseEntity<Moto> saveMoto(@PathVariable("usuarioId") int usuarioId, @RequestBody Moto moto) {
+	public ResponseEntity<Moto> guardarMoto(@PathVariable("usuarioId") int usuarioId, @RequestBody Moto moto) {
 		Moto nuevaMoto = usuarioService.saveMoto(usuarioId, moto);
 		return ResponseEntity.ok(nuevaMoto);
 	}
