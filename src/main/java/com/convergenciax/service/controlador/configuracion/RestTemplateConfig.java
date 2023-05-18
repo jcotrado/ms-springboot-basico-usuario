@@ -10,7 +10,7 @@ public class RestTemplateConfig {
 	//
 	
 	@Bean
-	@LoadBalanced
+	@LoadBalanced  //++jcotrado soporte a balanceo de carga
 	public RestTemplate restTemplate() { 	
 		return new RestTemplate();
 	}

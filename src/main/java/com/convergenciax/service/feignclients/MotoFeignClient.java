@@ -18,7 +18,7 @@ import com.convergenciax.service.modelos.Moto;
  * FeingCliente simplifica el uso con restControleer, se crea interface con nombre y url del microservicio.
  */
 
-@FeignClient(name= "moto-service")
+@FeignClient(name = "moto-service")
 @RequestMapping("/moto")
 public interface MotoFeignClient {
 	//se agrego metodo en UsuarioService

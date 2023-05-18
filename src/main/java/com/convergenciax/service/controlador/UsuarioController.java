@@ -54,18 +54,26 @@ public class UsuarioController {
 
 	@CircuitBreaker(name = "carrosCB", fallbackMethod = "fallBackGetCarros")
 	@GetMapping("/carros/{usuarioId}")
-	public ResponseEntity<List<Carro>> listarCarros(@PathVariable("usuarioId") int id) {
+	public ResponseEntity<List<Carro>> getCarros(@PathVariable("usuarioId") int id) {
 		Usuario usuario = usuarioService.getUsuarioById(id);
 		if (usuario == null)
 			return ResponseEntity.notFound().build();
-
 		List<Carro> carros = usuarioService.getCarros(id);
 		return ResponseEntity.ok(carros);
+	}
+	
+	@CircuitBreaker(name = "carrosCB", fallbackMethod = "fallBackSaveCarro")
+	// Se agrega para utilizarlo en FeignCliente y UsuarioService.saveCarro,
+	// saveMoto+/
+	@PostMapping("/carro/{usuarioId}")
+	public ResponseEntity<Carro> saveCarro(@PathVariable("usuarioId") int usuarioId, @RequestBody Carro carro) {
+		Carro nuevoCarro = usuarioService.saveCarro(usuarioId, carro);
+		return ResponseEntity.ok(nuevoCarro);
 	}
 
 	@CircuitBreaker(name = "motosCB", fallbackMethod = "fallBackGetMotos")
 	@GetMapping("/motos/{usuarioId}")
-	public ResponseEntity<List<Moto>> listarMotos(@PathVariable("usuarioId") int id) {
+	public ResponseEntity<List<Moto>> getMotos(@PathVariable("usuarioId") int id) {
 		Usuario usuario = usuarioService.getUsuarioById(id);
 		if (usuario == null)
 			return ResponseEntity.notFound().build();
@@ -73,18 +81,9 @@ public class UsuarioController {
 		return ResponseEntity.ok(motos);
 	}
 
-	@CircuitBreaker(name = "carrosCB", fallbackMethod = "fallBackSaveCarro")
-	// Se agrega para utilizarlo en FeignCliente y UsuarioService.saveCarro,
-	// saveMoto+/
-	@PostMapping("/carro/{usuarioId}")
-	public ResponseEntity<Carro> guardarCarro(@PathVariable("usuarioId") int usuarioId, @RequestBody Carro carro) {
-		Carro nuevoCarro = usuarioService.saveCarro(usuarioId, carro);
-		return ResponseEntity.ok(nuevoCarro);
-	}
-
 	@CircuitBreaker(name = "motosCB", fallbackMethod = "fallBackSaveMoto")
 	@PostMapping("/moto/{usuarioId}")
-	public ResponseEntity<Moto> guardarMoto(@PathVariable("usuarioId") int usuarioId, @RequestBody Moto moto) {
+	public ResponseEntity<Moto> saveMoto(@PathVariable("usuarioId") int usuarioId, @RequestBody Moto moto) {
 		Moto nuevaMoto = usuarioService.saveMoto(usuarioId, moto);
 		return ResponseEntity.ok(nuevaMoto);
 	}
