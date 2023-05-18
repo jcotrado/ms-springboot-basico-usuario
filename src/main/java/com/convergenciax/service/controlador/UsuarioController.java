@@ -124,5 +124,4 @@ public class UsuarioController {
 			RuntimeException exception) {
 		return new ResponseEntity("El usuario " + id + "Tiene todos los vehiculos en el taller", HttpStatus.OK);
 	}
-
 }
