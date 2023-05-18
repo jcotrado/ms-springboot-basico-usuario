@@ -101,13 +101,11 @@ public class UsuarioController {
 	 * Implementa metodos fallback llamados desde circuit-breaker para tolerancia de
 	 * fallos
 	 */
-	private ResponseEntity<List<Carro>> fallBackGetCarros(@PathVariable("usuarioId") int id,
-			RuntimeException exception) {
+	private ResponseEntity<List<Carro>> fallBackGetCarros(@PathVariable("usuarioId") int id,RuntimeException exception) {
 		return new ResponseEntity("El usuario " + id + "Tiene los carros en el taller", HttpStatus.OK);
 	}
 
-	private ResponseEntity<List<Carro>> fallBackSaveCarro(@PathVariable("usuarioId") int id,
-			RuntimeException exception) {
+	private ResponseEntity<Carro> fallBackSaveCarro(@PathVariable("usuarioId") int id, RuntimeException exception) {
 		return new ResponseEntity("El usuario " + id + "No tiene dinero para el carro", HttpStatus.OK);
 	}
 
@@ -115,13 +113,12 @@ public class UsuarioController {
 		return new ResponseEntity("El usuario " + id + "Tiene los carros en el taller", HttpStatus.OK);
 	}
 
-	private ResponseEntity<List<Carro>> fallBackSaveMoto(@PathVariable("usuarioId") int id,
-			RuntimeException exception) {
+	private ResponseEntity<Moto> fallBackSaveMoto(@PathVariable("usuarioId") int id, RuntimeException exception) {
 		return new ResponseEntity("El usuario " + id + "No tiene dinero para la moto", HttpStatus.OK);
 	}
-
-	private ResponseEntity<List<Carro>> fallBackGetTodos(@PathVariable("usuarioId") int id,
-			RuntimeException exception) {
+	
+    // Se usa <Map <String, Object>> para devolver objetos carros y motos en la misma respuesta
+	private ResponseEntity<Map <String, Object>> fallBackGetTodos(@PathVariable("usuarioId") int id, RuntimeException exception) {
 		return new ResponseEntity("El usuario " + id + "Tiene todos los vehiculos en el taller", HttpStatus.OK);
 	}
 }
